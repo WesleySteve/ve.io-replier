@@ -32,7 +32,16 @@ while True:
         path = values['-IN-']
         file = os.path.basename(path)
         
-        window['-FILE_PATH-'].update(f'O caminho do arquivo {path}')
+        if check_db_exists(DATA_DIR):
+            
+            # remove
+            window['-MSG-'].update(f'Database already exists')
+            
+        else:
+            os.rename(path, os.path.join(DATA_DIR, 'DADOS.xlsx'))
+            
+            if create_db_files_xlsx_and_xls(DATA_DIR, file):
+                window['-MSG-'].update(f'Database created successfully')
         
 
 window.close()    
