@@ -14,8 +14,19 @@ list_files = []
 
 layout = [
     [sg.Button('Search Files')],
-    [sg.ListBox(list_files, size=(70,30), key='-LIST-')]
+    [sg.Listbox(list_files, size=(60,20), key='-LIST-')]
     
 ]
 
+window = sg.Window('System Replier', layout, size=(800, 600))
 
+
+while True:
+    
+    event, values = window.read()
+    
+    if event == sg.WIN_CLOSED:
+        break
+    
+    
+window.close()
