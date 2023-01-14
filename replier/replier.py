@@ -1,5 +1,5 @@
 import os
-
+import getpass
 import PySimpleGUI as sg
 
 
@@ -27,6 +27,18 @@ while True:
     
     if event == sg.WIN_CLOSED:
         break
+    
+    if event == 'Search Files':
+        # getting logged user
+        user = getpass.getuser()
+        
+        # moving to directory
+        os.chdir(f"C:/Users{user}/Desktop")
+        
+        current_diretory = os.getcwd()
+        
+        
+        
     
     
 window.close()
