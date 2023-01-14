@@ -33,11 +33,18 @@ while True:
         user = getpass.getuser()
         
         # moving to directory
-        os.chdir(f"C:/Users{user}/Desktop")
+        os.chdir(f"C:/Users/{user}/Desktop")
         
         current_diretory = os.getcwd()
         
-        
+        for folder, subfolder, filename in os.walk(current_diretory):
+            for f in filename:
+                if f.endswith('.xlsx') or f.endswith('.xls'):
+                    # verificar aba do arquivo
+                    # listar arquivos q tem a aba DADOS
+                    list_files.append(f)
+                    
+        window['-LIST-'].update(list_files)
         
     
     
